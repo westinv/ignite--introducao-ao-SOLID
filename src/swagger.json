@@ -1,0 +1,336 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Desafio Documentation",
+        "description": "This is an API Desafio S.O.L.I.D",
+        "version": "1.0.0",
+        "contact": {
+            "email": "teste@gmail.com"
+        }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create a user",
+                "description": "Create a new user",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "Victor",
+                                    "email": "teste@gmail.com"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "a2c2cb54-19e1-47e8-9688-6846dc43db2b"
+                                        },
+                                        "admin": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Victor"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "teste@gmail.com"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-11-09T12:11:48.278Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-11-09T12:11:48.278Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "User already exists"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "List all users",
+                "description": "List all users",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "user_id",
+                        "description": "User ID exists and admin",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "example": "a2c2cb54-19e1-47e8-9688-6846dc43db2b"
+                                            },
+                                            "admin": {
+                                                "type": "boolean",
+                                                "example": false
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Victor"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "teste@gmail.com"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "example": "2021-11-09T12:11:48.278Z"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "example": "2021-11-09T12:11:48.278Z"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "User not autenticate"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "List one user",
+                "description": "List one user",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "a2c2cb54-19e1-47e8-9688-6846dc43db2b"
+                                        },
+                                        "admin": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Victor"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "teste@gmail.com"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-11-09T12:11:48.278Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-11-09T12:11:48.278Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "User not found"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Invalid params"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{id}/admin": {
+            "patch": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update admin status",
+                "description": "Update admin status",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "a2c2cb54-19e1-47e8-9688-6846dc43db2b"
+                                        },
+                                        "admin": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Victor"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "teste@gmail.com"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-11-09T12:11:48.278Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-11-09T12:11:48.278Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "User not found"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
